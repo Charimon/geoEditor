@@ -1,0 +1,18 @@
+@(message: String)
+
+  @css = {
+    <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/main.css")">
+
+  }
+
+  @scripts = {
+    <script src="@routes.Assets.at("javascripts/map.js")"></script>
+    <script src="@routes.Assets.at("javascripts/main.js")"></script>
+  }
+
+@main("Geo Editor")(scripts)(css) {
+  @*<div ng-viewport="toolbar"></div>*@
+  <div ng-viewport="navigator" class="navigator-viewport"></div>
+  @*<div ng-viewport="utilities"></div>*@
+  <div ng-viewport="editor" class="editor-viewport"></div>
+}

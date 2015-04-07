@@ -1,0 +1,47 @@
+$primaryColor: rgb(0, 150, 136)
+$primaryColorDark: rgb(0, 121, 107)
+$accentColor: rgb(63,81,181)
+$accentColorDark: rgb(48,63,159)
+$secondaryAccentColor: rgb(255,235,59)
+$secondaryAccentColorDark: rgb(251,192,45)
+
+*
+  margin: 0
+  padding: 0
+
+html, body
+  background: $primaryColorDark
+  height: 100%
+
+.content
+  background: #fff
+  height: 100%
+  display: flex
+  flex-direction: row
+  align-items: center
+
+ng-viewport
+  display: block
+  background: #fff
+  overflow: auto
+  height: 100%
+
+map
+  display: block
+  position: absolute
+  bottom: 0
+  top: 0
+  left: 0
+  right: 0
+  
+.navigator-viewport
+  width: 20%
+  height: 100%
+  border-right: 1px solid $primaryColorDark
+  position: relative
+
+.editor-viewport
+  box-sizing: border-box
+  width: 80%
+  height: 100%
+  position: relative
