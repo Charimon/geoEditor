@@ -1,0 +1,36 @@
+@import "colors"
+
+.navigator-viewport
+  width: 20%
+  min-width: 14em
+  height: 100%
+  border-right: 1px solid $primaryColorDark
+  position: relative
+  background: $white
+  overflow: auto
+
+
+.group-header
+  padding: 0.4em 0.5em
+  background: $primaryColor
+  color: $white
+
+.group-row
+  padding: 0.4em 0.5em
+  display: flex
+  flex-direction: row
+  align-items: baseline
+  justify-content: space-between
+  text-decoration: none
+  color: $black
+
+  &:hover
+    text-decoration: none
+    color: $primaryColorDark
+
+  &:nth-child(even)
+    background: darken($white, 2%)
+
+.group-row-subtitle
+  color: $gray
+  font-size: 0.6em

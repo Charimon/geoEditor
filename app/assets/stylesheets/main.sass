@@ -1,9 +1,4 @@
-$primaryColor: rgb(0, 150, 136)
-$primaryColorDark: rgb(0, 121, 107)
-$accentColor: rgb(63,81,181)
-$accentColorDark: rgb(48,63,159)
-$secondaryAccentColor: rgb(255,235,59)
-$secondaryAccentColorDark: rgb(251,192,45)
+@import "colors"
 
 *
   margin: 0
@@ -12,6 +7,18 @@ $secondaryAccentColorDark: rgb(251,192,45)
 html, body
   background: $primaryColorDark
   height: 100%
+  color: $black
+
+a
+  text-decoration: none
+  color: $primaryColor
+
+  &:hover
+    text-decoration: underline
+    color: $primaryColorDark
+
+  &:active
+    color: $primaryColorDark
 
 .content
   background: #fff
@@ -33,15 +40,22 @@ map
   top: 0
   left: 0
   right: 0
-  
-.navigator-viewport
-  width: 20%
-  height: 100%
-  border-right: 1px solid $primaryColorDark
-  position: relative
 
 .editor-viewport
   box-sizing: border-box
-  width: 80%
   height: 100%
   position: relative
+  flex-grow: 1
+
+
+.utilities-viewport
+  width: 20%
+  min-width: 14em
+  height: 100%
+  border-left: 1px solid $primaryColorDark
+  position: relative
+  background: $white
+  overflow: auto
+  order: 2
+
+@import "navigator"

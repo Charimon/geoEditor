@@ -1,3 +1,7 @@
-<div ng-repeat="feature in overviewNavigator.features">
-  {{feature.properties.NEIGHBORHO}}
+<div>
+  <div class="group-header">layer header</div>
+  <a ng-link="detail({name: feature.properties.NEIGH_NUM})" class="group-row" ng-repeat="feature in overviewNavigator.features">
+    <div>{{feature.properties.NEIGHBORHO}}</div>
+    <div class="group-row-subtitle">{{feature.flattenedCoordinates().length}} points</div>
+  </a>
 </div>

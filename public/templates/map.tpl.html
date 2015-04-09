@@ -1,3 +1,5 @@
-<map styles="map.styles">
-  <feature model="feature" ng-repeat="feature in map.features"></feature>
+<map styles="map.styles" center="map.center" zoom="map.zoom">
+  <feature model="feature" ng-repeat="feature in map.features">
+    <shape-options type="polygon" model="{fillColor:'rgb(0, 121, 107)', strokeColor:'rgb(0, 121, 107)', strokeWeight:1}"></shape-options>
+  </feature>
 </map>

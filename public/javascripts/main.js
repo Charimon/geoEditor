@@ -6,25 +6,39 @@
     .service("FileService", FileService)
     .controller("AppController", AppController)
     .controller("MapController", MapController)
-    .controller("OverviewNavigatorController", OverviewNavigatorController);
+    .controller("OverviewNavigatorController", OverviewNavigatorController)
+    .controller("NameUtilitiesController", NameUtilitiesController);
 
 
   AppController.$inject = ['$router'];
-  MapController.$inject = ['FileService'];
+  MapController.$inject = ['$location', '$routeParams', 'FileService', 'MapHelper'];
   OverviewNavigatorController.$inject = ['FileService'];
+  NameUtilitiesController.$inject = ['FileService', '$routeParams'];
   FileService.$inject = ['$timeout', '$q', '$http', 'Feature'];
 
 
   function AppController($router){
     $router.config([
-      {path:"/", components:{
-        editor:'map',
-        navigator:'overviewNavigator'
-      }}
+      {
+        path:"/",
+        components:{
+          editor:'map',
+          navigator:'overviewNavigator',
+          utilities:"nameUtilities"
+        }
+      },{
+        path:"/detail/:name",
+        as:"detail",
+        components:{
+          editor:'map',
+          navigator:'overviewNavigator',
+          utilities:'nameUtilities'
+        }
+      }
     ]);
   }
 
-  function MapController(FileService){
+  function MapController($location, $routeParams, FileService, MapHelper){
     var self = this;
 
     this.styles = [
@@ -37,6 +51,9 @@
 
     FileService.getFile().then(function(features){
       self.features = features;
+
+      MapHelper.fitBounds(features);
+
     });
   }
 
@@ -47,11 +64,23 @@
     });
   }
 
+  function NameUtilitiesController(FileService, $routeParams){
+    var self = this;
+
+    FileService.getFile().then(function(features){
+      return features.filter(function(feature){
+        return feature.properties.NEIGH_NUM == $routeParams.name;
+      })[0];
+    }).then(function(feature){
+      self.feature = feature;
+    });
+  }
+
   function FileService($timeout, $q, $http, Feature){
 
     var _loadSeattle = function(){
       return $http.get("/assets/data/seattle_hoods.json").then(function(response){
-        return Feature.promiseFrom(response.data.features.slice(0,10));
+        return Feature.promiseFrom(response.data.features.slice(0,20));
       });
     };
 
