@@ -1,18 +1,9 @@
 @import "colors"
 
-.navigator-viewport
-  width: 20%
-  min-width: 14em
-  height: 100%
-  border-right: 1px solid $primaryColorDark
-  position: relative
-  background: $white
-  overflow: auto
-
-
 .group-header
+  box-sizing: border-box
   padding: 0.4em 0.5em
-  background: $primaryColor
+  background: $primaryColorDark
   color: $white
 
 .group-row
@@ -22,6 +13,8 @@
   align-items: baseline
   justify-content: space-between
   text-decoration: none
+  white-space: nowrap
+  text-overflow: ellipsis
   color: $black
 
   &:hover
@@ -31,6 +24,18 @@
   &:nth-child(even)
     background: darken($white, 2%)
 
+  &.active
+    transition: 1s
+    background: $primaryColor
+    color: $white
+
+.group-row-title
+  overflow: hidden
+  text-overflow: ellipsis
+
 .group-row-subtitle
   color: $gray
   font-size: 0.6em
+
+  .active > &
+    color: $white

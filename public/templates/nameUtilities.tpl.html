@@ -1,7 +1,21 @@
 <div>
-  <div class="group-header">properties</div>
-  <div class="group-row" ng-repeat="(k, prop) in nameUtilities.feature.properties">
-    <div>{{k}}</div>
-    <div>{{prop}}</div>
+
+  <div class="property-list">
+    <div class="property-header">properties</div>
+    <div class="property-item" ng-repeat="(k, prop) in nameUtilities.feature.properties">
+      <div class="property-name">{{k}}</div>
+      <div class="property-value">{{prop}}</div>
+    </div>
+  </div>
+
+  <div class="property-list" ng-repeat="path in nameUtilities.feature.geometry.options.paths">
+    <div class="property-header">
+      <span>path</span>
+      <span ng-show="nameUtilities.feature.geometry.options.paths.length > 1">{{$index}}</span>
+      <span>({{path.length}} points)</span>
+    </div>
+    <div class="property-item" ng-repeat="coordinate in path">
+      <div class="property-name">{{coordinate.lat|number:6}}, {{coordinate.lng|number:6}}</div>
+    </div>
   </div>
 </div>

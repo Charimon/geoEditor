@@ -1,0 +1,33 @@
+@import "colors"
+
+.property-list
+  border-top: 1px solid $borderColor
+  margin: 0 0.2em
+  padding: 0.3em 0
+
+  &:first-child
+    border-top: none
+
+.property-header
+  font-size: 0.3em
+  margin: 0 0 1em 0
+  color: $black
+  font-weight: bold
+  text-transform: uppercase
+
+
+.property-item
+  padding: 0.2em 0.8em
+  display: flex
+  flex-direction: row
+  align-items: baseline
+  justify-content: flex-start
+
+.property-name
+  font-size: 0.9em
+  padding-right: 1em
+  color: darken($primaryColorDark, 20%)
+  min-width: 34%
+
+.property-value
+  font-size: 1em

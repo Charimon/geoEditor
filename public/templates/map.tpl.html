@@ -1,5 +1,21 @@
-<map styles="map.styles" center="map.center" zoom="map.zoom">
-  <feature model="feature" ng-repeat="feature in map.features">
-    <shape-options type="polygon" model="{fillColor:'rgb(0, 121, 107)', strokeColor:'rgb(0, 121, 107)', strokeWeight:1}"></shape-options>
-  </feature>
-</map>
+<div ui-view="navigator" class="viewport viewport-navigator"></div>  
+
+<div class="viewport viewport-map">
+  <map styles="map.styles" center="map.center" zoom="map.zoom">
+    <feature model="feature" ng-repeat="feature in map.features">
+      <shape-options type="polygon" model="{fillColor:'rgb(0, 121, 107)', strokeColor:'rgb(0, 121, 107)', strokeWeight:1}"></shape-options>
+    </feature>
+  </map>
+  <div class="shortcut-list">
+    <div class="shortcut-item" ng-click="map.centerZoomSelected()">
+      <div class="shortcut-name">center+zoom</div>
+      <div class="shortcut-key">alt 2</div>
+    </div>
+    <div class="shortcut-item" ng-click="map.centerSelected()">
+      <div class="shortcut-name">center</div>
+      <div class="shortcut-key">alt 3</div>
+    </div>
+  </div>
+</div>
+
+<div ui-view="utilities" class="viewport viewport-utilities"></div>
